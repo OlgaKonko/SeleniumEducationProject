@@ -13,4 +13,10 @@ public class UserBO {
     public void createNewUser() {
         new MainPage().goToLoginPage().goToCreateAccountPage().createAccount(user);
     }
+    public void signIn(){
+        MainPage mainPage = new MainPage();
+        mainPage.goToLoginPage().goToSignInPage().signIn(user);
+        mainPage.update();
+        assert mainPage.checkLogIn().equals(user.getName());
+    }
 }

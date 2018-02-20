@@ -9,4 +9,7 @@ public class PageObject {
     public PageObject() {
         PageFactory.initElements(driver, this);
     }
+    public void update(){
+                  PageFactory.initElements(driver, this);
+    }
 }

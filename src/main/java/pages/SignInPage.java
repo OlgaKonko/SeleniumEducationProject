@@ -7,30 +7,23 @@ import org.openqa.selenium.support.FindBy;
 import static assertions.CreateAccountAssertions.checkErrorMessages;
 import static assertions.CreateAccountAssertions.checkWarningMessages;
 
-
-public class CreateAccountPage extends PageObject {
-    @FindBy(id = "ap_customer_name")
-    private WebElement nameField;
+public class SignInPage extends PageObject{
     @FindBy(id = "ap_email")
     private WebElement emailField;
     @FindBy(id = "ap_password")
     private WebElement passwordField;
-    @FindBy(id = "ap_password_check")
-    private WebElement passwordCheckField;
+    @FindBy(id = "signInSubmit")
+    private WebElement signInButton;
 
-    @FindBy(id = "continue")
-    private WebElement createAccountButton;
-
-    public CreateAccountPage() {
+    public SignInPage() {
         super();
     }
 
-    public void createAccount(User user) {
-        nameField.sendKeys(user.getName());
+    public void signIn(User user) {
         emailField.sendKeys(user.getEmail());
         passwordField.sendKeys(user.getPassword());
-        passwordCheckField.sendKeys(user.getPassword());
-        createAccountButton.click();
+
+        signInButton.click();
         checkErrorMessages();
         checkWarningMessages();
     }
