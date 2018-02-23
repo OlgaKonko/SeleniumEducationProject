@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.CommandExecutor;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -27,39 +29,32 @@ public class DriverManager {
         WebDriver driver;
         switch (System.getProperty("browser", "chrome")) {
             case "chrome": {
-               // System.setProperty("webdriver.chrome.driver", "/Project/EducationProject/SeleniumEducationProject/src/main/resources/chromedriver.exe");
-                //driver = new ChromeDriver();
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
             }
             case "firefox": {
-                //System.setProperty("webdriver.gecko.driver", "/Project/EducationProject/SeleniumEducationProject/src/main/resources/geckodriver.exe");
-                //driver = new FirefoxDriver();
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
             }
             case "edge": {
-                System.setProperty("webdriver.edge.driver", "/Project/EducationProject/SeleniumEducationProject/src/main/resources/MicrosoftWebDriver.exe");
+               WebDriverManager.edgedriver().version("4.15063").setup();
                 driver = new EdgeDriver();
-
-               // WebDriverManager.edgedriver().setup();
-              //  driver = new EdgeDriver();
                break;
             }
+            case "ie": {
+                WebDriverManager.iedriver().setup();
+                driver = new InternetExplorerDriver();
+                break;
+            }
+            case "opera": {
+                WebDriverManager.operadriver().setup();
+                driver = new OperaDriver();
+                break;
+            }
             case "safari": {
-              //  System.setProperty("webdriver.edge.driver", "/Project/EducationProject/SeleniumEducationProject/src/main/resources/MicrosoftWebDriver.exe");
-                //System.setProperty("webdriver.safari.noinstall", "true");
-
-              //  Selenium sel = new DefaultSelenium("localhost", 4444, "*safari", "http://www.imdb.com/");
-                //CommandExecutor executor = new SeleneseCommandExecutor(sel);
-               // DesiredCapabilities dc = new DesiredCapabilities();
-               // driver = new RemoteWebDriver(executor, dc);
-                //SafariOptions safariOptions = new SafariOptions();
-                //safariOptions.setUseCleanSession(true);
-               // safariOptions.setPort(4444);
-                driver = new  SafariDriver();
+                driver = new SafariDriver();
                 break;
             }
             default: {

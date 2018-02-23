@@ -13,6 +13,11 @@ public class UserBO {
     public void createNewUser() {
         new MainPage().goToLoginPage().goToCreateAccountPage().createAccount(user);
     }
+
+    public void createNewList(String listname){
+        MainPage mainPage = new MainPage();
+        mainPage.goToMyListPage().goToCreateListPage().createList(listname);
+    }
     public void signIn(){
         MainPage mainPage = new MainPage();
         mainPage.goToLoginPage().goToSignInPage().signIn(user);

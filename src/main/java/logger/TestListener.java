@@ -37,6 +37,6 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-            closeDriver();
+        closeDriver();
     }
 }
