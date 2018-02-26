@@ -20,6 +20,13 @@ public class MainPage extends PageObject {
     @FindBy(xpath = "//a[text()=\"Your Lists\"]")
     private WebElement myListsLink;
 
+   // @FindBy(xpath = "//span[class=\"downArrow\"]")
+    @FindBy(className = "downArrow")
+    private WebElement arrow;
+
+    @FindBy(id = "navUserMenu")
+    private WebElement userMenu;
+
 
     public MainPage() {
         super();
@@ -40,15 +47,16 @@ public class MainPage extends PageObject {
     }
 
     private Actions openUserMenu(){
-       // userPanel.click();
         Actions actions = new Actions(driver);
-        return actions.moveToElement(userPanel);
+        actions.moveToElement(userPanel).build().perform();
+        return actions;
     }
 
     public MyListsPage goToMyListPage() {
-        Actions action = openUserMenu();
-        action.moveToElement(myListsLink);
-        action.click(myListsLink).build().perform();
+     // openUserMenu();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(userPanel).pause(1000).moveToElement(myListsLink).click(myListsLink).build().perform();
+      // myListsLink.click();
         //myListsLink.click();
         //action.build().perform();
         return new MyListsPage();
