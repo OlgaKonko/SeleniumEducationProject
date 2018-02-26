@@ -1,17 +1,19 @@
-package pages;
+package pages.lists;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.PageObject;
 
-public class CreateNewListPage extends PageObject{
+public class CreateNewListPage extends PageObject {
     @FindBy(id = "list-create-name")
     private WebElement listNameField;
 
-    @FindBy(xpath = "//button[text=\"CREATE\"]]")
+    @FindBy(xpath = "//button[text()=\"CREATE\"]")
     private WebElement createListButton;
 
-    public void createList(String name){
+    public ListSettingsPage createList(String name) {
         listNameField.sendKeys(name);
         createListButton.click();
+        return new ListSettingsPage();
     }
 }

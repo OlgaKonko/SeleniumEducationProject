@@ -1,8 +1,9 @@
-package pages;
+package pages.account;
 
 import model.User;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.PageObject;
 
 import static assertions.CreateAccountAssertions.checkErrorMessages;
 import static assertions.CreateAccountAssertions.checkWarningMessages;

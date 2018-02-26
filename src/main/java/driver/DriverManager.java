@@ -1,26 +1,20 @@
 package driver;
 
-import com.thoughtworks.selenium.DefaultSelenium;
-import com.thoughtworks.selenium.Selenium;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import logger.EventHandler;
-//import org.openqa.selenium.SeleneseCommandExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.remote.CommandExecutor;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-//import org.openqa.selenium.safari.SafariDriver;
-//import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.safari.SafariOptions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
+
+//import org.openqa.selenium.SeleneseCommandExecutor;
+//import org.openqa.selenium.safari.SafariDriver;
+//import org.openqa.selenium.safari.SafariOptions;
 
 public class DriverManager {
     public static WebDriver driver = initDriver();
@@ -39,9 +33,9 @@ public class DriverManager {
                 break;
             }
             case "edge": {
-               WebDriverManager.edgedriver().version("4.15063").setup();
+                WebDriverManager.edgedriver().version("4.15063").setup();
                 driver = new EdgeDriver();
-               break;
+                break;
             }
             case "ie": {
                 WebDriverManager.iedriver().setup();
@@ -64,16 +58,16 @@ public class DriverManager {
             }
         }
 
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.get("http://www.imdb.com/");
-       // EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
-      //  eventDriver.get("http://www.imdb.com/");
+        // EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
+        //  eventDriver.get("http://www.imdb.com/");
         EventHandler handler = new EventHandler();
-       // eventDriver.register(handler);
+        // eventDriver.register(handler);
         return driver;//eventDriver;
     }
 
     public static void closeDriver() {
-        driver.quit();
+        //driver.quit();
     }
 }
